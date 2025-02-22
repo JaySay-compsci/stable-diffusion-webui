@@ -215,7 +215,7 @@ pyenv global 3.10.6
 **cd back to stable diffusion directory then run**
 `./webui.sh`
 
-This should get it to launch correctly as you will now have the correct python environment set on your linux machine using pyenv. If not, verify pyenv is correctly isntalled with all dependencies again, then verify that the correct python version is installed and set globally.
+This should get it to launch correctly as you will now have the correct python environment set on your linux machine using pyenv. If not, verify pyenv is correctly installed with all dependencies again, then verify that the correct python version is installed and set globally.
 
 
 ### Installation on Apple Silicon
