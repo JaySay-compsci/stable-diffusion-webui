@@ -213,7 +213,7 @@ pyenv global 3.10.6
 [REFERENCE:](https://github.com/pandas-dev/pandas/issues/27532#issuecomment-514044754)
 
 **cd back to stable diffusion directory then run**
-./webui.sh
+`./webui.sh`
 
 This should get it to launch correctly as you will now have the correct python environment set on your linux machine using pyenv. If not, verify pyenv is correctly isntalled with all dependencies again, then verify that the correct python version is installed and set globally.
 
