@@ -156,6 +156,68 @@ git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui
 
 3. Run `webui.sh`.
 4. Check `webui-user.sh` for options.
+
+### Linux Troubleshooting if running webui.sh fails made personally on my own (JaySay-compsci) fork. Linux Mint 22 Cinnamon Edition
+
+**If you do not have pyenv you must also install pyvenv. Follow instructions on its github repository page.**
+[Pyenv](https://github.com/pyenv/pyenv)
+
+
+**Once Installed run the following commands**
+
+`pyenv install 3.10.6`
+(This is the current version of python needed to run stable diffusion. Any newer and it will not work correctly. Python is built into most linux distributions so if it's a new version, it will not properly run without manually installing the correct version)
+
+`pyenv global 3.10.6`
+(Use pyenv to set the global python version to 3.10.6. This is done so when running webui.sh, the venv that gets created is the correct version.)
+
+**NOTE:**
+If errors popped up for the python version install, refer to [pyenv](https://github.com/pyenv/pyenv/wiki/Common-build-problems) common build problems
+
+The following command for these dependencies are what I needed to install
+
+`sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev`
+
+[REFERENCE:](https://stackoverflow.com/questions/37227854/pyenv-build-failed-ubuntu-15-04-using-python-build-20160509)
+
+**Run the following command to ensure you are running the correct version**
+`python --version`
+(This should return 3.10.6 if all worked right)
+
+
+cd to stable diffusion directory
+open the webui-user.sh file and uncomment the following
+#python_cmd="python"  (NOTE: It will say python3. Remove the 3.)
+
+You can do this by running it through nano or vi/vim or you can open it through your file manager in a basic text editor and edit it that way too. To open via nano run the following command from the stable-diffusion-webui directory
+`sudo nano webui-user.sh`
+
+**Check that NO VENV directory has been created already. And if so remove it. To do so run the following command from stable diffusion directory**
+`ls -l`
+(And if you see a venv file run the following)
+`sudo rm -rf venv`
+
+
+Once you are sure there is no venv currently, run the following command to launch
+`./webui.sh`
+
+**NOTE:**
+(If error: no module named _lzma found pops up you will have to uninstall the python version, install the dependency manually then reinstall the python version with pyenv again. Run the following commands)
+```
+pyenv uninstall 3.10.6
+sudo apt install liblzma-dev
+pyenv install 3.10.6
+pyenv global 3.10.6
+```
+
+[REFERENCE:](https://github.com/pandas-dev/pandas/issues/27532#issuecomment-514044754)
+
+**cd back to stable diffusion directory then run**
+./webui.sh
+
+This should get it to launch correctly as you will now have the correct python environment set on your linux machine using pyenv. If not, verify pyenv is correctly isntalled with all dependencies again, then verify that the correct python version is installed and set globally.
+
+
 ### Installation on Apple Silicon
 
 Find the instructions [here](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Installation-on-Apple-Silicon).
